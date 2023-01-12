@@ -1,0 +1,177 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 0.5px solid var(--Grey-2);
+
+
+    padding: 0 20px;
+
+}
+
+.container {
+
+    width: 100%;
+}
+
+.btnSair {
+    text-decoration: none;
+
+    color: var(--Grey-0);
+    background-color: var(--Grey-3);
+
+    padding: 10px;
+
+    border-radius: 4px;
+    border: none;
+
+    transition: all 0.3s;
+    cursor: pointer;
+
+}
+
+.btnSair:hover {
+    background-color: var(--Grey-2);
+
+}
+
+section {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+
+    border: 0.5px solid var(--Grey-2);
+}
+
+@media (max-width: 450px) {
+
+    section {
+
+        flex-direction: column;
+        align-items: left;
+
+
+    }
+
+}
+
+main {
+    padding: 10px;
+    margin: 0 auto;
+
+    width: 80vw;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px;
+}
+
+nav button {
+    background-color: var(--Grey-3);
+    color: var(--Grey-0);
+
+    font-weight: 700;
+    font-size: 16px;
+
+    width: 50px;
+
+    padding: 8px;
+
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+
+}
+
+nav button:hover {
+    background-color: var(--Grey-2);
+
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--Grey-3);
+
+    padding: 32px 22px;
+    gap: 10px;
+
+    list-style: none;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--Grey-4);
+
+    height: 50px;
+
+    padding: 10px;
+
+    border-radius: 4px;
+
+    transition: all 0.3s;
+
+
+}
+
+li:hover {
+    background-color: var(--Grey-2);
+}
+
+
+
+li>div {
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+}
+
+li span {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+li p {
+    font-size: 12px;
+    font-weight: 500;
+
+    color: #868E96;
+
+    transition: all 0.3s;
+
+    cursor: pointer
+}
+
+li p:hover {
+
+    color: var(--Color-primary-Focus);
+}
+
+li svg {
+
+    cursor: pointer;
+    color: var(--Grey-1);
+    cursor: pointer;
+
+    transition: all 0.3s;
+}
+
+li svg:hover {
+
+    color: var(--Color-primary-Focus);
+}
