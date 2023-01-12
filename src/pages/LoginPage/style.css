@@ -1,0 +1,11 @@
+header h1 {
+
+  color: var(--Color-primary);
+
+  text-align: center;
+}
+
+.toastSucess {
+
+  background-color: blue;
+}
