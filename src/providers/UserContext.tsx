@@ -10,6 +10,7 @@ interface IUserContextProps {
 }
 
 interface IUserContext {
+  LoadUser(): Promise<void>;
   Login(data: any): Promise<void>;
   Signup(data: any): Promise<void>;
   loggedUser: ILoggedUser | null;
@@ -58,26 +59,27 @@ const Providers = ({ children }: IUserContextProps) => {
   const [loading, setLoading] = useState(true);
   const [userTechs, setUserTechs] = useState([] as Itech[]);
 
-  useEffect(() => {
+  async function LoadUser() {
     const token = localStorage.getItem("@KenzieHub:token");
 
-    async function loadUser() {
-      if (token) {
-        try {
-          const { data } = await instance.get("/profile");
+    if (token) {
+      try {
+        const { data } = await instance.get("/profile");
 
-          setLoggedUser(data);
-          setUserTechs(data.techs);
-        } catch (error) {
-          localStorage.clear();
-          console.log(error);
-          const requestError = error as AxiosError<IAxiosError>;
-          toast.error(requestError.message);
-        }
+        setLoggedUser(data);
+        setUserTechs(data.techs);
+      } catch (error) {
+        localStorage.clear();
+        console.log(error);
+        const requestError = error as AxiosError<IAxiosError>;
+        toast.error(requestError.message);
       }
-      setLoading(false);
     }
-    loadUser();
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    LoadUser();
   }, []);
 
   async function Login(data: IloginData) {
@@ -122,6 +124,7 @@ const Providers = ({ children }: IUserContextProps) => {
   return (
     <UserContext.Provider
       value={{
+        LoadUser,
         Login,
         Signup,
         loggedUser,

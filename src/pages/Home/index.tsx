@@ -10,7 +10,7 @@ import { Navigate } from "react-router-dom";
 
 export const HomePage = () => {
   const { loggedUser, loading, logout, userTechs } = useContext(UserContext);
-  const { techDelete, showModal, setShowModal, techUpdate } =
+  const { techDelete, showModal, closeModal, techUpdate } =
     useContext(TechContext);
 
   if (loading) {
@@ -22,7 +22,8 @@ export const HomePage = () => {
 
   return (
     <div className="container">
-      {showModal ? <ModalCreateTech /> : null}
+      {showModal && <ModalCreateTech />}
+
       <header>
         <h1>Kenzie Hub</h1>
         <button className="btnSair" onClick={logout}>
@@ -38,7 +39,7 @@ export const HomePage = () => {
           <h2>Tecnologias</h2>
           <button
             onClick={() => {
-              setShowModal(true);
+              closeModal();
             }}
           >
             +
@@ -52,7 +53,7 @@ export const HomePage = () => {
                 <p onClick={techUpdate}>{tech.status}</p>
                 <BsTrashFill
                   onClick={() => {
-                    techDelete(tech);
+                    techDelete(tech.id);
                   }}
                 />
               </div>
