@@ -34,7 +34,7 @@ Aplicação em desenvolvimento, desenvolvida na Kenzie Academy Brasil com a fun�
 
 # 🛠️ Abrir e rodar o projeto
 
-Você pode acessar os arquivos do projeto clicando [aqui](https://github.com/JuniorSantos05/KenzieHub).
+Você pode acessar os arquivos do projeto clicando [aqui](https://kenzie-rk1i839ij-juniorsantos05.vercel.app/).
 
 # ✔️ Técnicas e tecnologias utilizadas
 
