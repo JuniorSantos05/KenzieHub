@@ -14,7 +14,7 @@ export interface IAxiosError {
 
 interface ITechProvider {
   techCreate(data: Itech): Promise<void>;
-  techDelete(id: Itech): Promise<void>;
+  techDelete(id: string | number): Promise<void>;
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   techUpdate: () => void;
@@ -24,43 +24,32 @@ interface ITechProvider {
 export const TechContext = createContext({} as ITechProvider);
 
 const TechProvider = ({ children }: ITechProviderProps) => {
-  const { userTechs } = useContext(UserContext);
+  const { userTechs, LoadUser } = useContext(UserContext);
 
   const [showModal, setShowModal] = useState(false);
 
   async function techCreate(data: Itech) {
     try {
-      // const newData = [
-      //   ...userTechs,
-      //   {
-      //     status: userTechs.status,
-      //     title: userTechs.title,
-      //   },
-      // ];
-
       const response = await instance.post("/users/techs", data);
 
       const { tech: techResponse, token } = response.data;
       userTechs.push(techResponse);
-      console.log(data);
 
       toast.success("Nova Tech Cadastrada com Sucesso!");
+      LoadUser();
+      //setShowModal(false);
       window.location.reload();
-      // setUserTechs(newData);
 
       instance.defaults.headers.authorization = `Bearer ${token}`;
-    } catch (error) {
-      // toast.error(error);
-    }
+    } catch (error) {}
   }
 
-  async function techDelete(id: Itech) {
+  async function techDelete(id: string | number) {
     try {
       await instance.delete(`/users/techs/${id}`);
 
       toast.success("Tech foi deletada com sucesso");
-
-      window.location.reload();
+      LoadUser();
     } catch (error) {
       const requestError = error as AxiosError<IAxiosError>;
       toast.error(requestError.message);
@@ -72,7 +61,11 @@ const TechProvider = ({ children }: ITechProviderProps) => {
   }
 
   function closeModal() {
-    setShowModal(false);
+    if (showModal) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
   }
 
   return (

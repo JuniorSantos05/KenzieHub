@@ -18,7 +18,7 @@ export const ModalCreateTech = () => {
   });
 
   return (
-    <div className="modal">
+    <div className="modal" onClick={closeModal}>
       <FormModalStyled onSubmit={handleSubmit(techCreate)}>
         <div>
           <h2>Cadastrar Tecnologia</h2>
@@ -36,18 +36,13 @@ export const ModalCreateTech = () => {
         </label>
         <label htmlFor="status">
           Selecionar status
-          <select name="status" id="status">
-            <option value="Iniciante" {...register("status")}>
-              Iniciante
-            </option>
-            <option value="Intermediário" {...register("status")}>
-              Intermediário
-            </option>
-            <option value="Avançado" {...register("status")}>
-              Avançado
-            </option>
-            {errors.status && <p>{errors.status.message}</p>}
+          <select name="status" id="status" {...register("status")}>
+            <option value="">Selecionar Status</option>
+            <option value="Iniciante">Iniciante</option>
+            <option value="Intermediário">Intermediário</option>
+            <option value="Avançado">Avançado</option>
           </select>
+          {errors.status && <p>{errors.status.message}</p>}
         </label>
         <button type="submit">Cadastrar Tecnologia</button>
       </FormModalStyled>
