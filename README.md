@@ -23,8 +23,6 @@ Aplicação em desenvolvimento, desenvolvida na Kenzie Academy Brasil com a fun�
 
 > :construction: Projeto em construção :construction:
 
-#Funcionalidades
-
 # :hammer: Funcionalidades do projeto
 
 - `Criação do usuário`: é nescessário que o usuário se cadastre na plataforma para utilizar.
